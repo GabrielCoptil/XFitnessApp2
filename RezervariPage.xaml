@@ -1,0 +1,37 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XFitnessApp2"
+             x:Class="XFitnessApp2.RezervariPage">
+    <StackLayout Padding="20">
+        <Label Text="Rezervări Clase Disponibile" FontSize="Large" HorizontalOptions="Center" />
+
+        <ListView x:Name="AvailableSchedulesListView"
+                  Margin="0,20,0,10"
+                  SelectionMode="Single"
+                  ItemSelected="OnScheduleSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Clasa}" Detail="{Binding Date}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Text="Rezervă" Clicked="OnReserveClicked" IsEnabled="False" x:Name="ReserveButton" />
+
+        <Label Text="Clasele tale rezervate" FontSize="Large" Margin="0,30,0,10" HorizontalOptions="Center" />
+
+        <ListView x:Name="UserReservationsListView"
+                  Margin="0,20,0,10"
+                  SelectionMode="Single"
+                  ItemSelected="OnRezervareSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Schedule.Clasa}" Detail="{Binding Schedule.Date}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+        <Button Text="Șterge Rezervare" Clicked="OnDeleteClassClicked" IsEnabled="False" x:Name="DeleteButton" />
+       
+    </StackLayout>
+</ContentPage>

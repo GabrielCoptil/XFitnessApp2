@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XFitnessApp2"
+             x:Class="XFitnessApp2.ScheduleAdminPage">
+    <StackLayout Padding="20">
+        <Label Text="Administrare Program" FontSize="Large" HorizontalOptions="Center" />
+
+        <ListView x:Name="ScheduleListView"
+                  Margin="0,20,0,10"
+                  SelectionMode="Single"
+                  ItemSelected="OnScheduleSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Clasa}" Detail="{Binding Date}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Entry x:Name="ClassEntry" Placeholder="Introdu clasa (ex: Zumba)" />
+        <Entry x:Name="DurationEntry" Placeholder="Durata în ore (ex: 1.5)" Keyboard="Numeric" />
+        <DatePicker x:Name="DatePicker" />
+
+        <Button Text="Adaugă Clasă" Clicked="OnAddClassClicked" />
+        <Button Text="Șterge Clasă" Clicked="OnDeleteClassClicked" IsEnabled="False" x:Name="DeleteButton" />
+    </StackLayout>
+</ContentPage>
